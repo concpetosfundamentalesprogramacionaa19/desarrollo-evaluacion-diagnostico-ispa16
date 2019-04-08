@@ -1,0 +1,51 @@
+num_autos, num_autos_aux,i_argentina,i_colombia,i_chile,i_otros i[1-n],(marca,origen x[1-n]), (costo,impuesto,precio,total_imp,precio_venta_total,total_generado_imp d[1-n])
+num autos <- 0,num_autos_aux <-0 , marca<-" " , origen<-" ",costo <-0, total_imp<-0, impuesto<-0, precio<-0, total_generado_imp <- 0 ,precio_venta_total<-0 ,i_argentina <-0, i_colombia <-0, i_chile <-0, i_otros <-0
+Inicio	
+	<<"Ingrese la cantidad  de carros a importar"
+	>>num_autos
+	num_autos_aux<-num_autos
+	mientras (num_autos <> 0) hacer
+		<<"ingrese la marca del vehiculo"
+		>>marca
+		<<"ingrese el origen del vehiculo"
+		>>origen
+		<<"ingrese el costo del vehiculo" 
+		>>costo
+		si origen == "Argentina" 
+			impuesto<-0.2
+			precio<-costo + (costo*impuesto)
+			i_argentina = i_argentina+1
+		finsi
+
+		si origen == "Colombia"
+			impuesto<-0.25
+			precio<-costo + (costo*impuesto)
+			i_colombia = i_colombia+1	
+		finsi
+	
+		si origen == "Chile"
+			impuesto<-0.3
+			precio<-costo + (costo*impuesto)
+			i_chile = i_chile+1
+		finsi
+	
+		si origen <> "Argentina" o "Colombia" o "Chile" 
+			impuesto<-0.4
+			precio<-costo + (costo*impuesto)
+			i_otros = i_otros+1
+		finsi
+		num_autos <- num_autos-1
+		total_imp <-(impuestos+total_imp)*100
+		precio_venta_total <-precio+precio_venta_total
+		total_generado_imp <- (precio_venta_total*total_imp)
+	
+	Finmientras
+	
+	<<"el total de autos importados es: " +num_autos_aux
+	<<"el total de impuestos generados es del :" total_generado_imp
+	<<"el total de precios de ventas generado es :" +precio_venta_total
+	<<"el n?mero de autos importados de Argentina: " +i_argentina
+	<<"el n?mero de autos importados de Colombia: " +i_colombia
+	<<"el n?mero de autos importados de Chile: " +i_chile
+	<<"el n?mero de autos importados de otros paises : " +i_otros
+Fin
